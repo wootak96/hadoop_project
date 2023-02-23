@@ -1,10 +1,10 @@
 from pyspark import SparkConf,SparkContext
-
+Job_id={}
 def loadJob():
-    Job_id={}
+    
     Job_list={}
     cnt=0
-    with open("~~") as f : # open 주소!!
+    with open("ds_salaries.text") as f :
         for line in f:
             fields=line.split(",")
             if fields[4] not in Job_list.values():
@@ -15,6 +15,28 @@ def loadJob():
 
 def parseInput(line):
     fields=line.split(",")
-    return ()
+    return (Job_id[fields[4]],(float(fields[5]),1.0))
+
+if __name__=="__main__":
+
+    conf = SparkConf().setAppName("lucrative job")
+    sc = SparkContext(conf = conf)
+
+    jobNames = loadJob()
 
 
+    lines = sc.textFile("hdfs:///user/maria_dev/ds_salaries.text")
+
+    job_salary = lines.map(parseInput)
+  
+
+    ratingTotalsAndCount = job_salary.reduceByKey(lambda job1,job2 : (job1[0]+job2[0],job1[1]+job2[1]) )
+
+    averageSalary = ratingTotalsAndCount.mapValues(lambda totalCount : totalCount[0]/totalCount[1])
+    
+    sortedJob = averageSalary.sortBy(lambda x: x[1])
+
+    results = sortedJob.take(10)
+
+    for result in results:
+        print(Job_id[result[0]],result[1])
