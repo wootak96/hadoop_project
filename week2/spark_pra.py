@@ -25,7 +25,7 @@ if __name__=="__main__":
     jobNames = loadJob()
 
 
-    lines = sc.textFile("hdfs:///user/maria_dev/ds_salaries.text")
+    lines = sc.textFile("hdfs:///user/maria_dev/ml-100k/ds_salaries.text")
 
     job_salary = lines.map(parseInput)
   
