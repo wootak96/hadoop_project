@@ -48,7 +48,7 @@ if __name__ == "__main__":
 
     # Print them out, converting movie ID's to names as we go.
     for job in top:
-        print (Job_id[job[0]], job[1], job[2])
+        print (job[0], job[2])
 
     # Stop the session
     spark.stop()
