@@ -14,4 +14,4 @@ with open("C:/Users/신현준/Desktop/crawling/player.txt","w",encoding="utf8") 
         name=name.split(" ")
 
         if len(name)>=14:
-            f.write(str(i)+"   "+name[8]+"   "+name[13][0]+"\n") 
+            f.write(str(i)+","+name[8]+","+name[13][0]+"\n") 
