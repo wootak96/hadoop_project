@@ -32,4 +32,4 @@ with open("C:/Users/신현준/Desktop/crawling/match.txt","w",encoding="utf8") a
                 match_map=match_map.split(",")
                 match_map=match_map[1][4:-1]
                                 
-                f.write(winner_name+"   "+winner_tribe+"   "+loser_name+"   "+loser_tribe+"   "+match_map+"\n")
+                f.write(winner_name+","+winner_tribe+","+loser_name+","+loser_tribe+","+match_map+"\n")
