@@ -13,5 +13,5 @@ with open("C:/Users/신현준/Desktop/crawling/map.txt","w",encoding="utf8") as 
             map=map.split(">")
             map=map[2][:-4]
            
-            f.write(str(i)+"   "+map+"\n") 
+            f.write(str(i)+","+map+"\n") 
             
