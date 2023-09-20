@@ -1,8 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
-with open("C:/Users/신현준/Desktop/crawling/match2.txt","w",encoding="utf8") as f:
-    for i in range(1,10): 
+with open("C:/Users/신현준/Desktop/new/match.txt","w",encoding="utf8") as f:
+    for i in range(1,1547): 
         url="https://ygosu.com/reports/?m2=result&s_type=oneonone&s_type2=all&search=&searcht=&page={}".format(i)
         headers={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"}
         res=requests.get(url,headers=headers)
